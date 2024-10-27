@@ -92,8 +92,11 @@ header {
     color: #3f60e5;
 }
 
-.wrapper {
+.wrapper.hidden {
     display: none;
+}
+
+.wrapper {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -105,21 +108,20 @@ header {
     border-radius: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 30px black;
-    display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     z-index: 100;
 }
 
-.wrapper.active {
-    height: 520px;
+/* Cuando está activo para el popup, permanece centrado */
+.wrapper.active-popup {
     display: flex;
 }
 
-.wrapper.active-popup {
-    transform: scale(1);
-    
+.wrapper.active {
+    height: 520px;
+    display: flex;
 }
 
 .wrapper .form-box {
