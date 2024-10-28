@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilo.css">
+    <title>Login</title>
+</head>
+<body>
+    <header>
+        <h2 class="logo">LaVaca<img src="/IMG/vecteezy_piggy-bank-icon-logo-vector-illustration-money-saving_9434829-ai.png" alt=""></h2>
+        <nav class="navigation">
+            <a href="login.html">Inicio</a>
+            <a href="/acerca.html">Acerca de</a>
+            <a href="/servicios.html">Servicios</a>
+            <a href="/contacto.html">Contacto</a>
+            <button class="btnLogin-popup">Iniciar Sesión</button>
+        </nav>
+    </header>
+    
+    <section class="portfolios container">
+        <h2>¿Cómo funciona?</h2>
+        <div class="portfolio">
+            <div class="portfolio-content">
+                <h3>Seguridad</h3>
+                <p class="small-text">
+                    Autenticación Biométrica: Protege tus ahorros con reconocimiento facial o huella dactilar. Solo tú puedes acceder a tu cuenta, garantizando la seguridad de tu información.
+                </p>
+            </div>
+            <img src="IMG/img1.png" alt="Seguridad">
+        </div>
+        <div class="portfolio">
+            <div class="portfolio-content">
+                <h3>Recordatorios de Ahorro</h3>
+                <p class="small-text">
+                    No pierdas de vista tus metas. Recibe notificaciones para realizar aportes a tus objetivos de manera periódica y mantén tu ahorro al día.
+                </p>
+            </div>
+            <img src="IMG/img2.png" alt="Recordatorios de Ahorro">
+        </div>
+        <div class="portfolio">
+            <div class="portfolio-content">
+                <h3>Resumen de Ahorro</h3>
+                <p class="small-text">
+                    Visualiza tu progreso con gráficos detallados. Consulta estadísticas mensuales y anuales de tus ahorros, y sigue tu evolución hacia cada meta.
+                </p>
+            </div>
+            <img src="IMG/img3.png" alt="Resumen de Ahorro">
+        </div>
+        <div class="portfolio">
+            <div class="portfolio-content">
+                <h3>Chat de Grupo de Ahorro</h3>
+                <p class="small-text">
+                    Conecta con tus amigos mientras ahorras. Chatea directamente con los miembros de tu grupo de ahorro, comparte motivación e ideas para alcanzar su objetivo juntos.
+                </p>
+            </div>
+            <img src="IMG/img4.png" alt="Chat de Grupo de Ahorro">
+        </div>
+    </section>
+    <div class="wrapper">
+      
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+
+        
+        <div class="form-box login">
+            <h2>Iniciar Sesión</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#">Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+                <div class="login-register">
+                    <p>No tienes una cuenta? <a href="#" class="register-link">Registrate!</a></p>
+                </div>
+            </form>
+        </div>
+        
+        
+        <div class="form-box register">
+            <h2>Registrate</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required>
+                    <label>Usuario</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Acepta los terminos y condiciones.
+                    </label>
+                </div>
+                <button type="submit" class="btn">Registrar</button>
+                <div class="login-register">
+                    <p>No tienes una cuenta aun? <a href="#" class="login-link">Entrar</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+
+    <script src="/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

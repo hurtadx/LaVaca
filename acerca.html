@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilo.css">
+    
+</head>
+    <style>
+
+        .small-text {
+            font-size: 0.9em; 
+            color: rgb(230, 207, 0); 
+        }
+        .porfoliosContainer {
+            margin-top: 120px;
+            margin-left: 50px;
+        }
+
+        .porfolios {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 20px; 
+        }
+        .porfolio {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%; 
+            max-width: 800px; 
+        }
+        .porfolio img {
+            max-width: 150px; 
+            margin-right: 15px; 
+        }
+        h2 {
+            margin-bottom: 30px; 
+        }
+        h3 {
+            margin: 0; 
+            margin-bottom: 10px; 
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h2 class="logo">LaVaca<img src="/IMG/vecteezy_piggy-bank-icon-logo-vector-illustration-money-saving_9434829-ai.png" alt=""></h2>
+        <nav class="navigation">
+            <a href="login.html">Inicio <hre/a>
+            <a href="acerca.html">Acerca de</a>
+            <a href="/servicios.html">Servicios</a>
+            <a href="/contacto.html">Contacto</a>
+            <button class="btnLogin-popup">Iniciar Sesión</button>
+        </nav>
+    </header>
+
+    <section class="porfoliosContainer">
+        <section class="porfolios">
+            <h2>¿Qué ofrecemos?</h2>
+            <p>En LaVaca, estamos comprometidos a brindarte una experiencia única y colaborativa para el ahorro. Aquí te presentamos lo que ofrecemos:</p>
+            <ul class="offerings-list">
+                <li>
+                    <strong>Ahorro Colaborativo:</strong> Te facilitamos la oportunidad de ahorrar con amigos para metas comunes, como viajes, eventos o salidas. ¡Juntos es más divertido!
+                </li>
+                <li>
+                    <strong>Metas Personalizadas:</strong> Establece metas de ahorro específicas y trabaja en equipo para alcanzarlas. Puedes crear diferentes grupos según tus objetivos y mantener el enfoque.
+                </li>
+                <li>
+                    <strong>Gestión Sencilla:</strong> Nuestra interfaz es intuitiva y fácil de usar, lo que te permite seguir el progreso de tu ahorro sin complicaciones. Mantén todo organizado y accesible desde tu dispositivo.
+                </li>
+                <li>
+                    <strong>División de Gastos:</strong> Simplificamos el proceso de dividir gastos entre amigos. Evita las confusiones y mantén la transparencia en cada actividad que planifiques.
+                </li>
+                <li>
+                    <strong>Consejos Financieros:</strong> Accede a recursos y consejos prácticos sobre ahorro y finanzas personales. Queremos ayudarte a tomar decisiones informadas para un futuro financiero saludable.
+                </li>
+                <li>
+                    <strong>Comunidad Activa:</strong> Únete a una comunidad de jóvenes con ideas afines. Comparte tus logros, busca inspiración y aprende de las experiencias de otros.
+                </li>
+                <li>
+                    <strong>Seguridad y Confianza:</strong> Nos tomamos en serio la seguridad de tu información y tus ahorros. Nuestra app cuenta con medidas de seguridad robustas para que puedas ahorrar con tranquilidad.
+                </li>
+            </ul>
+            <p>¡Descubre todo lo que Lavaca puede ofrecerte y comienza a vivir experiencias increíbles mientras ahorras con tus amigos!</p>
+        </section>
+    </section>
+
+    <div class="wrapper">
+       
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+
+       
+        <div class="form-box login">
+            <h2>Iniciar Sesión</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#">Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+                <div class="login-register">
+                    <p>No tienes una cuenta? <a href="#" class="register-link">Registrate!</a></p>
+                </div>
+            </form>
+        </div>
+        
+        
+        <div class="form-box register">
+            <h2>Registrate</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required>
+                    <label>Usuario</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Acepta los terminos y condiciones.
+                    </label>
+                </div>
+                <button type="submit" class="btn">Registrar</button>
+                <div class="login-register">
+                    <p>No tienes una cuenta aun? <a href="#" class="login-link">Entrar</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

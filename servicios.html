@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/estilo.css">
+    
+</head>
+    <title>Login</title>
+    <style>
+
+    
+        
+        .small-text {
+            font-size: 0.9em; 
+            color: #666; 
+        }
+
+        .porfoliosServicio {
+            margin-top: 120px;
+            margin-left: 100px;
+        }
+        .porfolios {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 20px; 
+        }
+
+        .porfolio {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 80%; 
+            max-width: 880px; 
+        }
+        .porfolio img {
+            max-width: 150px; 
+            margin-right: 15px; 
+            justify-content: center;
+        }
+        h2 {
+            margin-bottom: 30px; 
+        }
+        h3 {
+            margin: 0; 
+            margin-bottom: 10px; 
+        }
+    </style>
+</head>
+<body>
+    
+    <header>
+        <h2 class="logo">LaVaca<img src="/IMG/vecteezy_piggy-bank-icon-logo-vector-illustration-money-saving_9434829-ai.png" alt=""></h2>
+        <nav class="navigation">
+            <a href="login.html">Inicio</a>
+            <a href="/acerca.html">Acerca de</a>
+            <a href="/servicios.html">Servicios</a>
+            <a href="/contacto.html">Contacto</a>
+            <button class="btnLogin-popup">Iniciar Sesión</button>
+        </nav>
+    </header>
+
+    <section class="porfoliosServicio">
+        <h2>Nuestros Servicios</h2>
+          <div class="porfolio">
+            <img src="/IMG/Savings-amico.svg" alt="">
+            <div class="porfolio-1">
+              <h3>Ahorro Grupal</h3>
+              <p>
+                Forma grupos de ahorro con amigos para colaborar en la planificación de planes. ¡Juntos, alcanzan sus metas más rápido!
+              </p>
+              
+            </div>
+          </div>
+      
+          <div class="porfolio">
+            <div class="porfolio-2">
+              <h3>Metas de Ahorro Personalizadas</h3>
+              <p>
+                Establece objetivos de ahorro específicos para cada viaje y recibe recordatorios para mantener el enfoque.
+              </p>
+              
+            </div>
+            <img src="/IMG/Piggy bank-pana.svg" alt="">
+          </div>
+          <div class="porfolio">
+            <img src="/IMG/Banknote-pana.svg" alt="">
+            <div class="porfolio-1">
+              <h3>Resumen de Ahorro</h3>
+              <p>
+                Visualiza tu progreso con gráficos detallados. Consulta estadísticas mensuales y anuales de tus ahorros, y sigue tu evolución hacia cada meta.
+              </p>
+              
+            </div>
+          </div>
+          <div class="porfolio">
+      
+            <div class="porfolio-2">
+              <h3>Chat de Grupo de Ahorro</h3>
+              <p>
+                Conecta con tus amigos mientras ahorras. Chatea directamente con los miembros de tu grupo de ahorro, comparte motivación e ideas para alcanzar su objetivo juntos.
+              </p>
+            
+            </div>
+            <img src="/IMG/Saving money-pana.svg" alt="">
+          </div>
+      
+    </section>
+
+    <div class="wrapper">
+      
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+
+        
+        <div class="form-box login">
+            <h2>Iniciar Sesión</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#">Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn">Entrar</button>
+                <div class="login-register">
+                    <p>No tienes una cuenta? <a href="#" class="register-link">Registrate!</a></p>
+                </div>
+            </form>
+        </div>
+        
+        
+        <div class="form-box register">
+            <h2>Registrate</h2>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" required>
+                    <label>Usuario</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Acepta los terminos y condiciones.
+                    </label>
+                </div>
+                <button type="submit" class="btn">Registrar</button>
+                <div class="login-register">
+                    <p>No tienes una cuenta aun? <a href="#" class="login-link">Entrar</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
