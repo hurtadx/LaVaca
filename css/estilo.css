@@ -43,6 +43,10 @@ header {
     border-radius: 20%;
     margin-right: 10px;
 }
+.navigation{
+display: flex;
+align-items: center; /* Alinea verticalmente el contenido */
+}
 
 .navigation a {
     position: relative;
@@ -90,6 +94,20 @@ header {
 .navigation .btnLogin-popup:hover {
     background: white;
     color: #3f60e5;
+}
+
+.User-image{
+    right: 20px;
+}
+
+.User-image img {
+    width: 40px; /* Ajusta el tamaño según sea necesario */
+    height: 40px; /* Ajusta el tamaño según sea necesario */
+    border-radius: 50%; /* Esto hace que la imagen sea circular */
+    display: block;
+    margin: 0 auto; /* Centra la imagen */
+    display: flex; /* Flex para alinear la imagen */
+    align-items: center; /* Alinea verticalmente la imagen */
 }
 
 .wrapper.hidden {
