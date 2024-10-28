@@ -79,9 +79,9 @@ header {
 /* Centrar contenido en header */
 .header-content {
     display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center;     /* Centra el contenido verticalmente */
-    text-align: center;      /* Centra el texto dentro del header */
+    justify-content: center; 
+    align-items: center;     
+    text-align: center;      
 }
 
 .content {
