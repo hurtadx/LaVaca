@@ -31,25 +31,6 @@ btnLoginPopup.addEventListener('click', () => {
     localStorage.setItem('isWrapperOpen', 'true'); 
 });
 
-// Cambiar el botón "Entrar" por "Cerrar Sesión" y mostrar la imagen circular al hacer clic
-btnEntrar.addEventListener('click', (e) => {
-    e.preventDefault(); // Evita que el formulario se envíe
-
-    // Cambia el texto del botón de inicio de sesión
-    btnLoginPopup.innerText = 'Cerrar Sesión';
-
-    // Muestra la imagen circular
-    userImageContainer.style.display = 'block'; 
-    userImageContainer.insertAdjacentElement('afterbegin', userImage); // Asegura que la imagen aparezca en el contenedor
-});
-
-// Función para cerrar sesión
-btnLoginPopup.addEventListener('click', () => {
-    if (btnLoginPopup.innerText === 'Cerrar Sesión') {
-        btnLoginPopup.innerText = 'Iniciar Sesión'; // Cambia el texto de vuelta
-        userImageContainer.style.display = 'none'; // Oculta la imagen circular
-    }
-});
 
 // Cerrar el popup
 iconClose.addEventListener('click', () => {
