@@ -1,116 +1,143 @@
-const wrapper = document.querySelector('.wrapper');
-const loginLink = document.querySelector('.login-link');
-const registerLink = document.querySelector('.register-link');
-const btnLoginPopup = document.querySelector('.btnLogin-popup');
-const iconClose = document.querySelector('.icon-close');
-const btnEntrar = document.querySelector('.btn'); 
-
-// Campos del formulario de inicio de sesión
-const loginEmailInput = document.querySelector('.login input[type="email"]');
-const loginPasswordInput = document.querySelector('.login input[type="password"]');
-
-// Campos del formulario de registro
-const registerUsernameInput = document.querySelector('.register input[type="text"]');
-const registerEmailInput = document.querySelector('.register input[type="email"]');
-const registerPasswordInput = document.querySelector('.register input[type="password"]');
-
-// Evento al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    const isWrapperOpen = localStorage.getItem('isWrapperOpen') === 'true';
-    wrapper.style.display = isWrapperOpen ? 'flex' : 'none';
-    if (isWrapperOpen) {
-        wrapper.classList.add('active-popup');
-    }
-});
-
-// Mostrar el formulario de registro
-registerLink.addEventListener('click', () => {
-    wrapper.classList.add('active');
-    wrapper.classList.add('active-popup'); 
-});
-
-// Mostrar el formulario de inicio de sesión
-loginLink.addEventListener('click', () => {
-    wrapper.classList.remove('active');
-    wrapper.classList.add('active-popup'); 
-});
-
-// Mostrar el popup de login
-btnLoginPopup.addEventListener('click', () => {
-    wrapper.classList.add('active-popup');
-    wrapper.style.display = 'flex';
-    localStorage.setItem('isWrapperOpen', 'true'); 
-});
-
-// Función para obtener cuentas de localStorage
-const getAccounts = () => {
-    const accounts = localStorage.getItem('accounts');
-    return accounts ? JSON.parse(accounts) : [];
-};
-
-// Función para guardar cuentas en localStorage
-const saveAccounts = (accounts) => {
-    localStorage.setItem('accounts', JSON.stringify(accounts));
-};
-
-// Validar inicio de sesión
-btnEntrar.addEventListener('click', (e) => {
-    e.preventDefault();
-
-    const email = loginEmailInput.value.trim();
-    const password = loginPasswordInput.value.trim();
-
-    if (!email || !password) {
-        alert('Por favor, ingresa un correo y una contraseña.');
-        return;
+document.addEventListener("DOMContentLoaded", function () { 
+    // Actualizar el conteo 
+    function updateVacasCount() {
+        const vacas = JSON.parse(localStorage.getItem('vacas')) || [];
+        const vacasCount = document.getElementById('vacas-count');
+        if (vacasCount) {
+            vacasCount.textContent = `${vacas.length} Vacas`;
+        }
     }
 
-    const accounts = getAccounts();
-    const user = accounts.find(account => account.email === email && account.password === password);
+    updateVacasCount();
 
-    if (user) {
-        // Inicio de sesión exitoso
-        alert('Inicio de sesión exitoso.');
-        wrapper.style.display = 'none';
-        window.location.href = 'index.html';
+    
+    const vacaSeleccionada = JSON.parse(localStorage.getItem('vacaSeleccionada'));
+    
+    console.log('Vaca seleccionada desde localStorage:', vacaSeleccionada); // Depuración
+
+    if (vacaSeleccionada) {
+        const montoTotal = vacaSeleccionada.montoTotal || 0;  
+        const metaTotal = vacaSeleccionada.meta || 0;        
+
+        // Actualizar el nombre de la vaca
+        const vacaNombreElement = document.getElementById('vaca-nombre');
+        if (vacaNombreElement) {
+            vacaNombreElement.textContent = `Vaca: ${vacaSeleccionada.name || 'Desconocida'}`;
+        }
+
+        // Actualizar el monto total y la meta
+        const montoTotalElement = document.getElementById('monto-total');
+        const progressBarElement = document.getElementById('progress-bar');
+
+        if (montoTotalElement && progressBarElement) {
+            // Verifico si los valores son válidos
+            if (metaTotal && montoTotal >= 0) {
+                montoTotalElement.textContent = `Monto: $${montoTotal.toFixed(2)} / Meta: $${metaTotal.toFixed(2)}`;
+
+                // Calcular porcentaje de progreso
+                const porcentaje = metaTotal > 0 ? (montoTotal / metaTotal) * 100 : 0;
+                progressBarElement.style.width = `${porcentaje}%`;
+            } else {
+                console.error('La vaca no tiene valores válidos de monto o meta.');
+            }
+        }
     } else {
-        alert('Correo o contraseña incorrectos.');
+        console.error('No se encontró una vaca seleccionada.');
     }
+
+    // Función para seleccionar una vaca 
+    function seleccionarVaca(nombreVaca) {
+        // Buscar la vaca seleccionada de la lista de vacas
+        const vacas = JSON.parse(localStorage.getItem('vacas')) || [];
+        const vacaSeleccionada = vacas.find(vaca => vaca.name === nombreVaca);
+
+        if (vacaSeleccionada) {
+            // Guardar la vaca seleccionada en localStorage
+            localStorage.setItem('vacaSeleccionada', JSON.stringify(vacaSeleccionada));
+
+     
+            updateVacasCount();
+        } else {
+            console.error('No se encontró la vaca seleccionada.');
+        }
+    }
+
+
 });
 
-// Registrar un nuevo usuario
-const btnRegistrar = document.querySelector('.register .btn');
-btnRegistrar.addEventListener('click', (e) => {
-    e.preventDefault();
+//fechas 
 
-    const username = registerUsernameInput.value.trim();
-    const email = registerEmailInput.value.trim();
-    const password = registerPasswordInput.value.trim();
+document.addEventListener("DOMContentLoaded", function () {
+    // Obtener la lista de vacas 
+    const vacas = JSON.parse(localStorage.getItem('vacas')) || [];
 
-    if (!username || !email || !password) {
-        alert('Por favor, completa todos los campos.');
-        return;
-    }
+    //  calcular cuál tiene la fecha de pago más cercana
+    if (vacas.length > 0) {
+        const proximaVaca = obtenerProximoPago(vacas);
 
-    const accounts = getAccounts();
-    const userExists = accounts.some(account => account.email === email);
-
-    if (userExists) {
-        alert('Ya existe una cuenta con este correo.');
+        if (proximaVaca) {
+            // Mostrar los días restantes para la vaca con la fecha más cercana
+            const daysLeftElement = document.querySelector('.days-left');
+            if (proximaVaca.diasRestantes === 0) {
+                daysLeftElement.textContent = `Hoy es el pago de ${proximaVaca.name}`;
+            } else if (proximaVaca.diasRestantes > 0) {
+                daysLeftElement.textContent = `Faltan ${proximaVaca.diasRestantes} días (${proximaVaca.name})`;
+            } else {
+                daysLeftElement.textContent = `La fecha de ${proximaVaca.name} ya pasó`;
+            }
+        }
     } else {
-        accounts.push({ username, email, password });
-        saveAccounts(accounts);
-        alert('Cuenta creada con éxito. Ahora puedes iniciar sesión.');
-        wrapper.classList.remove('active'); // Cambiar a formulario de inicio de sesión
+       
+        document.querySelector('.days-left').textContent = 'Sin vacas registradas';
+    }
+
+    /**
+     * Función para obtener la vaca con la fecha de pago más cercana
+     * @param {Array} vacas - Lista de vacas con sus fechas de pago
+     * @returns {Object|null} - La vaca más cercana con días restantes
+     */
+    function obtenerProximoPago(vacas) {
+        const fechaActual = new Date();
+
+        // Filtrar vacas con fechas futuras y calcular días restantes
+        const vacasConDias = vacas.map(vaca => {
+            const fechaPago = new Date(vaca.fecha); // Fecha de la vaca
+            const diferenciaTiempo = fechaPago - fechaActual; // Diferencia en milisegundos
+            const diasRestantes = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24)); // Convertir a días
+            return { ...vaca, diasRestantes };
+        });
+
+        // Filtrar solo las vacas con fechas que no hayan pasado y obtener la más cercana
+        const vacasFuturas = vacasConDias.filter(v => v.diasRestantes >= 0);
+        if (vacasFuturas.length === 0) {
+            return null; 
+        }
+
+        // Encontrar la vaca con menos días restantes
+        return vacasFuturas.reduce((masCercana, vaca) =>
+            vaca.diasRestantes < masCercana.diasRestantes ? vaca : masCercana
+        );
     }
 });
 
-// Cerrar el popup
-iconClose.addEventListener('click', () => {
-    wrapper.classList.remove('active-popup');
-    setTimeout(() => {
-        wrapper.classList.remove('active');
-        wrapper.style.display = 'none';
-        localStorage.setItem('isWrapperOpen', 'false'); 
-    }, 50); 
+//transacciones
+
+document.addEventListener("DOMContentLoaded", function () {
+    const transactionsList = document.querySelector('.transactions-list ul');
+    const transacciones = JSON.parse(localStorage.getItem('transacciones')) || [];
+    const vacas = JSON.parse(localStorage.getItem('vacas')) || [];
+
+    // Mostrar todas las transacciones
+    transacciones.forEach(transaccion => {
+        // Buscar el nombre de la vaca usando el id de la vaca
+        const vaca = vacas.find(v => v.id === transaccion.vacaId);
+        const vacaName = vaca ? vaca.name : 'Vaca eliminada'; // Si no se encuentra la vaca, mostrar "Vaca eliminada"
+
+        const listItem = document.createElement('li');
+        listItem.textContent = `${transaccion.date}: ${transaccion.type} - $${transaccion.amount} (${transaccion.description}) - Vaca: ${vacaName}`;
+        transactionsList.appendChild(listItem);
+    });
 });
+
+
+
